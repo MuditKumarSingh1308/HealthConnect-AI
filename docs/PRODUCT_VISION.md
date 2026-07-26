@@ -72,7 +72,68 @@ Healthcare authorities need better aggregated data to understand demand, identif
 
 # Who We Build For
 
-(To be completed)
+HealthConnect AI is designed as a collaborative healthcare platform that serves multiple stakeholders across the healthcare ecosystem. Each user group plays a vital role in enabling faster, more informed, and better-coordinated healthcare decisions.
+
+## 🟢 Tier 1 – Core Users (Version 1.x)
+
+These stakeholders form the foundation of HealthConnect AI and are essential to fulfilling the platform's mission.
+
+### Patients
+Individuals seeking timely medical assistance, emergency support, hospital recommendations, and guidance for making informed healthcare decisions.
+
+### Family Members & Caregivers
+People responsible for assisting patients during medical emergencies by coordinating hospital visits, ambulance bookings, and treatment decisions.
+
+### Doctors
+Medical professionals whose real-time availability, specialization, and expertise are critical factors in recommending the most appropriate healthcare provider for a patient's condition.
+
+### Healthcare Institutions (Hospitals)
+Hospitals providing treatment facilities, bed availability, medical equipment, emergency services, and other critical healthcare resources.
+
+### Ambulance Services
+Emergency transportation providers responsible for connecting patients with appropriate healthcare facilities in the shortest possible time.
+
+### Blood Banks
+Organizations that maintain and provide real-time blood availability information to support emergency medical treatment.
+
+---
+
+## 🟡 Tier 2 – Operational Users
+
+These stakeholders improve healthcare coordination and operational efficiency after the core platform is established.
+
+### Hospital Administrators
+Personnel responsible for managing hospital operations, including bed occupancy, doctor schedules, equipment availability, and overall resource utilization.
+
+### Nurses
+Healthcare professionals involved in patient care and day-to-day clinical operations whose availability contributes to efficient hospital workflows.
+
+### Diagnostic Laboratories
+Laboratories providing diagnostic services and medical reports that can be integrated into the patient's healthcare journey.
+
+### Government Health Departments
+Public healthcare authorities that can utilize aggregated, anonymized insights to improve healthcare planning, monitor resource utilization, and identify infrastructure requirements.
+
+---
+
+## 🔵 Tier 3 – Future Ecosystem Partners
+
+These stakeholders represent the long-term vision of creating a fully connected healthcare ecosystem.
+
+### Medical Suppliers
+Organizations responsible for supplying medicines, medical equipment, and essential healthcare resources, with future integration for intelligent inventory management and automated replenishment recommendations.
+
+### Insurance Providers
+Organizations that can streamline insurance verification and claim processes through future platform integrations.
+
+### Pharmacies
+Medicine providers that may support prescription fulfillment, medicine availability, and medication management in future releases.
+
+### Non-Governmental Organizations (NGOs)
+Organizations involved in healthcare awareness, emergency support, blood donation drives, and community health initiatives.
+
+### Research Organizations
+Institutions that can leverage anonymized healthcare insights for medical research, public health studies, and evidence-based policy recommendations.
 
 ---
 
