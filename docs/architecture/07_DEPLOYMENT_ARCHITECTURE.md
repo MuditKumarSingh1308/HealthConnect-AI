@@ -2719,3 +2719,598 @@ The Networking & Connectivity architecture establishes a secure, scalable, and r
 
 ---
 
+# Storage Architecture
+
+The Storage Architecture defines how HealthConnect AI manages, stores, protects, and retrieves unstructured and semi-structured data throughout the platform. Unlike the structured database, which manages transactional healthcare information, the storage layer is responsible for files, medical documents, diagnostic images, uploaded reports, backups, application logs, and future AI-related artifacts.
+
+Healthcare applications frequently process large files that require secure, durable, and scalable storage. The storage architecture therefore prioritizes confidentiality, integrity, availability, lifecycle management, and efficient retrieval while maintaining strict access control and regulatory alignment.
+
+The architecture is designed to support current application requirements while providing a clear migration path toward enterprise-scale object storage and distributed storage systems.
+
+---
+
+# Objectives
+
+The Storage Architecture aims to:
+
+- Provide secure file storage.
+- Protect uploaded healthcare documents.
+- Support scalable storage growth.
+- Ensure high data durability.
+- Enable efficient file retrieval.
+- Simplify storage management.
+- Integrate with backup and recovery processes.
+- Establish a production-ready storage platform.
+
+---
+
+# Storage Deployment Architecture
+
+```text
+              Backend Services
+                     │
+          Authorized Storage Requests
+                     │
+                     ▼
+             Storage Management Layer
+                     │
+      ┌──────────────┼──────────────┐
+      ▼              ▼              ▼
+Medical Reports   Images & Files   Application Assets
+      │              │              │
+      └──────────────┼──────────────┘
+                     ▼
+             Backup & Archive Storage
+                     │
+                     ▼
+          Monitoring & Lifecycle Policies
+```
+
+The storage layer is accessed exclusively through trusted backend services and is isolated from direct client access.
+
+---
+
+# Storage Responsibilities
+
+The storage layer manages:
+
+- Medical reports.
+- Uploaded healthcare documents.
+- Patient images.
+- Administrative documents.
+- Application assets.
+- Backup artifacts.
+- Log archives.
+- Future AI models and datasets.
+
+Structured healthcare records remain within the database, while file-based resources are maintained by the storage subsystem.
+
+---
+
+# Storage Organization
+
+Storage resources are logically organized according to their purpose.
+
+Examples include:
+
+- Patient documents.
+- Medical reports.
+- Uploaded images.
+- Administrative resources.
+- Backup storage.
+- Log archives.
+- AI artifacts (future).
+
+Logical organization simplifies access management, auditing, and lifecycle policies.
+
+---
+
+# Storage Access Model
+
+Storage access follows a controlled architecture.
+
+```text
+Client
+   │
+   ▼
+Frontend
+   │
+   ▼
+Backend APIs
+   │
+   ▼
+Storage Layer
+```
+
+Clients never interact directly with storage infrastructure. All file operations are validated and authorized through backend services.
+
+---
+
+# File Lifecycle Management
+
+Files progress through a defined lifecycle.
+
+```text
+Upload
+   │
+   ▼
+Validation
+   │
+   ▼
+Storage
+   │
+   ▼
+Access
+   │
+   ▼
+Archive
+   │
+   ▼
+Retention / Deletion
+```
+
+Lifecycle management ensures that stored resources remain secure, traceable, and appropriately retained throughout their operational lifetime.
+
+---
+
+# Storage Security
+
+Storage deployment incorporates multiple security controls.
+
+Examples include:
+
+- Encryption at rest.
+- Encryption in transit.
+- Access authorization.
+- File validation.
+- Malware scanning (future enhancement).
+- Secure storage credentials.
+- Audit logging.
+
+These controls protect sensitive healthcare documents against unauthorized access and tampering.
+
+---
+
+# Metadata Management
+
+Each stored object may include descriptive metadata.
+
+Examples include:
+
+- File identifier.
+- Upload timestamp.
+- Owner information.
+- File type.
+- Storage location.
+- Retention status.
+- Version information.
+
+Metadata enables efficient search, auditing, and lifecycle management without embedding operational details into application logic.
+
+---
+
+# Version Management
+
+Future deployments may support document versioning.
+
+Potential capabilities include:
+
+- Revision history.
+- Version rollback.
+- Change tracking.
+- Controlled document replacement.
+- Historical record preservation.
+
+Versioning improves traceability and reduces the risk of accidental data loss.
+
+---
+
+# Storage Performance
+
+Storage architecture supports efficient file operations.
+
+Performance considerations include:
+
+- Optimized upload handling.
+- Efficient download delivery.
+- Parallel file processing.
+- Compression where appropriate.
+- Large file support.
+- Future CDN integration for static resources.
+
+These capabilities improve responsiveness while supporting growing storage requirements.
+
+---
+
+# Backup Integration
+
+Storage services integrate with platform backup mechanisms.
+
+Backup objectives include:
+
+- Scheduled backups.
+- Secure backup storage.
+- Integrity verification.
+- Recovery testing.
+- Long-term retention.
+- Disaster recovery support.
+
+Backup integration ensures that critical healthcare documents remain recoverable.
+
+---
+
+# Monitoring
+
+Storage operations are continuously monitored.
+
+Examples include:
+
+- Storage capacity.
+- Upload success rates.
+- Download performance.
+- Access failures.
+- Storage utilization.
+- Backup status.
+- File integrity events.
+
+Continuous monitoring improves operational visibility and supports proactive capacity planning.
+
+---
+
+# Scalability Considerations
+
+The storage architecture supports future expansion through:
+
+- Elastic storage allocation.
+- Object storage compatibility.
+- Distributed storage support.
+- Independent storage scaling.
+- Lifecycle automation.
+- Cloud-native storage services.
+
+These capabilities allow storage infrastructure to grow alongside platform usage without significant architectural changes.
+
+---
+
+# Future Enhancements
+
+Future storage improvements may include:
+
+- Enterprise object storage.
+- Intelligent tiered storage.
+- Automated archival policies.
+- Global storage replication.
+- Content-addressable storage.
+- AI-assisted storage optimization.
+- Immutable storage for audit records.
+
+These enhancements improve durability, operational efficiency, and long-term scalability.
+
+---
+
+# Best Practices
+
+HealthConnect AI follows these storage management best practices:
+
+- Separate structured and unstructured data.
+- Restrict storage access through backend services.
+- Encrypt stored files and communications.
+- Validate uploaded content before storage.
+- Apply lifecycle management policies.
+- Monitor storage utilization continuously.
+- Integrate storage with backup processes.
+- Design storage for future scalability.
+
+---
+
+# Guiding Principle
+
+The Storage Architecture establishes a secure, scalable, and resilient platform for managing unstructured healthcare information within HealthConnect AI. By separating file storage from structured databases, enforcing controlled access, integrating lifecycle management, continuous monitoring, secure backup processes, and preparing for enterprise object storage technologies, the platform ensures that healthcare documents and digital assets remain protected, durable, and efficiently accessible throughout their lifecycle.
+
+---
+
+# CI/CD Deployment Pipeline
+
+The CI/CD (Continuous Integration and Continuous Delivery) Deployment Pipeline defines the automated process through which application changes are validated, built, tested, and deployed within HealthConnect AI. The pipeline establishes a consistent software delivery workflow that improves deployment reliability while reducing manual intervention and operational risk.
+
+Healthcare systems require careful deployment practices because software defects may directly impact emergency services, patient care workflows, and sensitive healthcare information. The CI/CD pipeline therefore emphasizes validation, security, traceability, repeatability, and controlled promotion across deployment environments.
+
+The architecture supports the current development workflow while providing a foundation for future enterprise DevSecOps practices.
+
+---
+
+# Objectives
+
+The CI/CD Deployment Pipeline aims to:
+
+- Automate software delivery.
+- Improve deployment consistency.
+- Reduce manual deployment errors.
+- Validate application quality.
+- Strengthen deployment security.
+- Support controlled environment promotion.
+- Improve release reliability.
+- Enable continuous platform evolution.
+
+---
+
+# Pipeline Overview
+
+The CI/CD pipeline automates the progression of software changes from source code to production deployment.
+
+```text
+Developer Commit
+        │
+        ▼
+Source Repository
+        │
+        ▼
+Continuous Integration
+        │
+        ▼
+Build & Validation
+        │
+        ▼
+Automated Testing
+        │
+        ▼
+Artifact Generation
+        │
+        ▼
+Deployment
+        │
+        ▼
+Verification
+        │
+        ▼
+Production Release
+```
+
+Each stage validates software quality before allowing progression to the next stage.
+
+---
+
+# Continuous Integration
+
+Continuous Integration focuses on validating every code change.
+
+Typical CI activities include:
+
+- Source code retrieval.
+- Dependency installation.
+- Application compilation.
+- Static code analysis.
+- Unit testing.
+- Build validation.
+
+Frequent integration reduces merge conflicts and detects issues early in the development lifecycle.
+
+---
+
+# Build Process
+
+The build stage prepares deployable application artifacts.
+
+Build activities include:
+
+- Dependency resolution.
+- Frontend application build.
+- Backend packaging.
+- AI service packaging.
+- Configuration validation.
+- Artifact generation.
+
+Successful builds produce versioned deployment artifacts suitable for downstream environments.
+
+---
+
+# Automated Testing
+
+Testing is integrated directly into the deployment pipeline.
+
+Testing categories include:
+
+- Unit testing.
+- Integration testing.
+- API validation.
+- Security testing.
+- Configuration verification.
+- Regression testing.
+
+Only validated software progresses to deployment stages.
+
+---
+
+# Artifact Management
+
+Deployment artifacts are generated after successful validation.
+
+Examples include:
+
+- Frontend build packages.
+- Backend deployment packages.
+- AI service packages.
+- Infrastructure definitions.
+- Deployment metadata.
+
+Artifacts should be immutable, versioned, and reproducible to ensure consistent deployments across environments.
+
+---
+
+# Deployment Stages
+
+Software progresses through controlled deployment environments.
+
+```text
+Development
+      │
+      ▼
+Testing
+      │
+      ▼
+Staging
+      │
+      ▼
+Production
+```
+
+Each stage introduces additional validation before production release.
+
+---
+
+# Deployment Automation
+
+Deployment processes should be automated wherever practical.
+
+Automation may include:
+
+- Environment provisioning.
+- Application deployment.
+- Configuration application.
+- Database migrations.
+- Health verification.
+- Deployment notifications.
+
+Automation improves consistency while reducing operational overhead.
+
+---
+
+# Release Validation
+
+Before production release, deployment validation verifies operational readiness.
+
+Validation activities include:
+
+- Application startup verification.
+- Health check confirmation.
+- API availability testing.
+- Configuration validation.
+- Service connectivity checks.
+- Monitoring integration verification.
+
+Successful validation confirms that the deployment is functioning as expected.
+
+---
+
+# Rollback Strategy
+
+The deployment pipeline should support controlled rollback procedures.
+
+Rollback objectives include:
+
+- Rapid service restoration.
+- Version rollback.
+- Deployment traceability.
+- Configuration recovery.
+- Database migration compatibility.
+- Operational continuity.
+
+Rollback capability reduces the impact of unsuccessful deployments.
+
+---
+
+# Security Integration
+
+Security validation is incorporated throughout the pipeline.
+
+Examples include:
+
+- Dependency vulnerability scanning.
+- Static security analysis.
+- Secret detection.
+- Configuration validation.
+- Artifact integrity verification.
+- Access control enforcement.
+
+Integrating security into the pipeline supports secure software delivery and aligns with DevSecOps principles.
+
+---
+
+# Pipeline Monitoring
+
+Pipeline operations are continuously monitored.
+
+Monitoring includes:
+
+- Build success rates.
+- Test execution results.
+- Deployment duration.
+- Deployment failures.
+- Rollback frequency.
+- Pipeline availability.
+
+Operational metrics enable continuous improvement of the software delivery process.
+
+---
+
+# Access Control
+
+Pipeline operations follow strict authorization controls.
+
+Examples include:
+
+- Role-based permissions.
+- Protected production deployments.
+- Controlled release approvals.
+- Secure credential management.
+- Audit logging.
+- Least-privilege access.
+
+These controls reduce the risk of unauthorized deployments.
+
+---
+
+# Scalability Considerations
+
+The CI/CD architecture supports future platform growth.
+
+Scalability features include:
+
+- Parallel build execution.
+- Independent service pipelines.
+- Modular deployment workflows.
+- Cloud-native runners.
+- Infrastructure automation.
+- Future multi-region deployment support.
+
+These capabilities allow the deployment process to scale alongside application complexity.
+
+---
+
+# Future Enhancements
+
+Future CI/CD improvements may include:
+
+- Full Infrastructure as Code (IaC) integration.
+- Progressive delivery techniques.
+- Blue-green deployments.
+- Canary releases.
+- Automated compliance validation.
+- AI-assisted deployment analysis.
+- Self-healing deployment pipelines.
+
+These enhancements improve deployment safety, operational efficiency, and enterprise readiness.
+
+---
+
+# Best Practices
+
+HealthConnect AI follows these CI/CD best practices:
+
+- Automate repetitive deployment tasks.
+- Validate every software change before deployment.
+- Generate immutable deployment artifacts.
+- Secure the software delivery pipeline.
+- Monitor pipeline performance continuously.
+- Maintain rollback capability.
+- Protect production deployments through controlled approvals.
+- Continuously improve deployment automation.
+
+---
+
+# Guiding Principle
+
+The CI/CD Deployment Pipeline establishes a secure, automated, and repeatable software delivery process for HealthConnect AI. By integrating continuous validation, automated testing, artifact management, controlled environment promotion, deployment verification, security checks, rollback mechanisms, and operational monitoring, the pipeline provides a reliable foundation for delivering high-quality AI-assisted healthcare services while supporting future enterprise DevSecOps practices.
+
+---
+
