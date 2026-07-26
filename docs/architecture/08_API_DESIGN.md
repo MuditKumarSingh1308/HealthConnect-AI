@@ -1766,3 +1766,907 @@ The Request & Response Standards establish a unified communication contract for 
 
 ---
 
+# Authentication & Authorization
+
+The Authentication & Authorization architecture defines how HealthConnect AI verifies client identities and controls access to protected API resources. Since the platform manages sensitive healthcare information and supports emergency medical services, every API interaction must ensure that only authenticated and authorized entities can access protected functionality.
+
+Authentication confirms the identity of a requesting client, while authorization determines whether that authenticated client has sufficient permissions to perform a specific operation. Together, these mechanisms establish a secure access control framework that protects patient information, administrative capabilities, AI services, and operational resources.
+
+The authentication and authorization model is designed to remain secure, scalable, interoperable, and adaptable to future enterprise identity management requirements.
+
+---
+
+# Objectives
+
+The Authentication & Authorization architecture aims to:
+
+- Verify client identity.
+- Protect sensitive healthcare resources.
+- Enforce access control policies.
+- Support role-based permissions.
+- Prevent unauthorized access.
+- Secure API communication.
+- Enable enterprise identity integration.
+- Support future authentication technologies.
+
+---
+
+# Authentication Overview
+
+Authentication establishes the identity of API consumers before protected resources are accessed.
+
+Authenticated clients may include:
+
+- Patients.
+- Healthcare professionals.
+- Hospital administrators.
+- Platform administrators.
+- AI service components.
+- Future external healthcare systems.
+
+Unauthenticated requests may access only explicitly designated public endpoints.
+
+---
+
+# Authorization Overview
+
+Authorization determines the actions an authenticated client may perform.
+
+Authorization decisions are based on:
+
+- User identity.
+- Assigned role.
+- Resource ownership.
+- Organizational policies.
+- Operational permissions.
+
+Every protected API request undergoes authorization before business logic is executed.
+
+---
+
+# Authentication Flow
+
+A typical authentication process follows the sequence below.
+
+```text
+Client Login
+      │
+      ▼
+Credential Verification
+      │
+      ▼
+Identity Validation
+      │
+      ▼
+Access Token Issued
+      │
+      ▼
+Authenticated API Requests
+      │
+      ▼
+Token Validation
+      │
+      ▼
+Protected Resource Access
+```
+
+Authentication occurs before authorization and request processing.
+
+---
+
+# Token-Based Authentication
+
+HealthConnect AI adopts token-based authentication for protected APIs.
+
+Typical characteristics include:
+
+- Stateless authentication.
+- Signed access tokens.
+- Secure transmission.
+- Token expiration.
+- Token renewal mechanisms.
+- Revocation support.
+
+Token-based authentication improves scalability while reducing server-side session management.
+
+---
+
+# Authorization Model
+
+The platform primarily follows Role-Based Access Control (RBAC).
+
+Example roles may include:
+
+| Role | Example Permissions |
+|------|----------------------|
+| Patient | View personal records, request ambulance, access AI triage |
+| Doctor | Access assigned patient information, review AI assessments |
+| Hospital Administrator | Manage hospital resources and ambulance availability |
+| Platform Administrator | Manage platform configuration and operational services |
+| AI Service | Perform authorized inference operations |
+
+Additional authorization models may be introduced as business requirements evolve.
+
+---
+
+# Protected Resources
+
+Authentication and authorization apply to resources such as:
+
+- Medical records.
+- Patient profiles.
+- Emergency requests.
+- Hospital management.
+- Administrative operations.
+- AI-assisted clinical services.
+- Notification management.
+
+Public resources should remain explicitly documented.
+
+---
+
+# Access Token Usage
+
+Protected API requests should include an access token.
+
+Example:
+
+```http
+Authorization: Bearer <access-token>
+```
+
+Tokens should never be transmitted through insecure communication channels.
+
+---
+
+# Token Lifecycle
+
+Access tokens progress through a controlled lifecycle.
+
+```text
+Issued
+   │
+   ▼
+Active
+   │
+   ▼
+Expiration
+   │
+   ▼
+Renewal or Re-authentication
+```
+
+Proper lifecycle management reduces long-term exposure if credentials are compromised.
+
+---
+
+# Permission Enforcement
+
+Permissions should be evaluated before executing protected operations.
+
+Typical checks include:
+
+- Authentication status.
+- Role validation.
+- Resource ownership.
+- Administrative privileges.
+- Operational restrictions.
+
+Authorization failures should terminate request processing immediately.
+
+---
+
+# Service Authentication
+
+Internal platform services should authenticate securely when communicating with one another.
+
+Examples include:
+
+- Backend-to-AI communication.
+- Service-to-service requests.
+- Administrative automation.
+- Background processing.
+
+Internal authentication should remain independent of end-user authentication.
+
+---
+
+# Session Management Principles
+
+Although authentication is token-based, session-related security remains important.
+
+Principles include:
+
+- Limited token lifetime.
+- Secure token storage.
+- Explicit logout support.
+- Token renewal.
+- Immediate revocation when necessary.
+
+These principles reduce the impact of credential compromise.
+
+---
+
+# Identity Provider Integration
+
+Future enterprise deployments may integrate with centralized identity providers.
+
+Potential capabilities include:
+
+- Single Sign-On (SSO).
+- Enterprise identity federation.
+- External authentication providers.
+- Organizational directory integration.
+- Multi-factor authentication (MFA).
+
+Identity integration improves operational consistency across enterprise environments.
+
+---
+
+# Auditability
+
+Authentication and authorization events should be recorded.
+
+Examples include:
+
+- Successful authentication.
+- Failed authentication.
+- Permission denials.
+- Administrative access.
+- Token revocation.
+- Role modifications.
+
+Audit records support compliance, monitoring, and security investigations.
+
+---
+
+# Scalability Considerations
+
+The authentication architecture supports enterprise growth through:
+
+- Stateless authentication.
+- Distributed token validation.
+- Independent identity services.
+- Centralized authorization policies.
+- Cloud-native identity integration.
+- Future federation support.
+
+These characteristics allow secure access management to scale with platform expansion.
+
+---
+
+# Future Enhancements
+
+Future authentication improvements may include:
+
+- Multi-factor authentication (MFA).
+- Attribute-Based Access Control (ABAC).
+- Adaptive authentication.
+- Biometric authentication.
+- Passwordless authentication.
+- Hardware-backed credentials.
+- Zero Trust identity verification.
+
+These enhancements strengthen security while improving user experience.
+
+---
+
+# Best Practices
+
+HealthConnect AI follows these authentication and authorization best practices:
+
+- Authenticate every protected request.
+- Apply least-privilege access control.
+- Use token-based authentication.
+- Enforce authorization before business processing.
+- Protect authentication credentials.
+- Log authentication events.
+- Periodically review access permissions.
+- Design identity services for scalability.
+
+---
+
+# Guiding Principle
+
+The Authentication & Authorization architecture establishes a secure access control framework for HealthConnect AI by combining reliable identity verification, token-based authentication, role-based authorization, secure permission enforcement, and comprehensive auditability. Through scalable identity management and consistent authorization policies, the platform protects sensitive healthcare resources while enabling secure, reliable, and enterprise-ready API access for authorized users and services.
+
+---
+
+# API Versioning Strategy
+
+The API Versioning Strategy defines how HealthConnect AI evolves its APIs while preserving compatibility for existing consumers. As the platform grows, APIs will require enhancements, new capabilities, performance improvements, and security updates. Versioning provides a structured approach for introducing these changes without unnecessarily disrupting applications that depend on existing interfaces.
+
+Healthcare platforms frequently integrate with multiple client applications, administrative portals, AI services, and future third-party healthcare systems. These consumers may adopt new API versions at different times, making controlled version management essential for maintaining operational stability.
+
+The versioning strategy supports continuous platform evolution while promoting backward compatibility, predictable migration, and long-term maintainability.
+
+---
+
+# Objectives
+
+The API Versioning Strategy aims to:
+
+- Enable controlled API evolution.
+- Preserve backward compatibility where practical.
+- Minimize integration disruptions.
+- Simplify client migration.
+- Support multiple API generations.
+- Improve long-term maintainability.
+- Establish predictable API lifecycles.
+- Support enterprise-scale API governance.
+
+---
+
+# Versioning Principles
+
+API versioning follows several guiding principles.
+
+These include:
+
+- Introduce versions only when necessary.
+- Avoid breaking existing consumers whenever possible.
+- Maintain clear migration paths.
+- Document version differences completely.
+- Support controlled deprecation.
+- Ensure predictable version lifecycles.
+
+Versioning should encourage stability rather than unnecessary fragmentation.
+
+---
+
+# Version Identification
+
+HealthConnect AI identifies API versions through the URI.
+
+Example:
+
+```text
+/api/v1/patients
+
+/api/v1/hospitals
+
+/api/v1/emergency-requests
+```
+
+Future versions may introduce:
+
+```text
+/api/v2/patients
+
+/api/v3/patients
+```
+
+URI-based versioning provides clear visibility and simplifies client implementation.
+
+---
+
+# Major Version Changes
+
+A new major version should be introduced only for changes that are not backward compatible.
+
+Examples include:
+
+- Resource redesign.
+- Breaking schema changes.
+- Authentication model changes.
+- Significant workflow modifications.
+- Removal of previously supported behavior.
+
+Major versions allow innovation while protecting existing consumers.
+
+---
+
+# Minor Enhancements
+
+Minor improvements should avoid requiring a new API version whenever possible.
+
+Examples include:
+
+- Additional optional fields.
+- Performance optimizations.
+- New optional query parameters.
+- Additional response metadata.
+- Internal implementation improvements.
+
+Backward-compatible enhancements preserve client stability.
+
+---
+
+# Backward Compatibility
+
+Backward compatibility should be maintained wherever practical.
+
+Compatibility strategies include:
+
+- Preserve existing endpoints.
+- Avoid changing required request fields.
+- Keep existing response fields stable.
+- Introduce optional attributes.
+- Extend rather than replace resources.
+
+Stable APIs reduce migration effort for clients.
+
+---
+
+# Deprecation Strategy
+
+Older API versions should follow a controlled deprecation process.
+
+Typical lifecycle:
+
+```text
+Active
+   │
+   ▼
+Deprecated
+   │
+   ▼
+Migration Period
+   │
+   ▼
+Retirement
+```
+
+Deprecation provides clients with sufficient time to transition before unsupported versions are removed.
+
+---
+
+# Migration Strategy
+
+API upgrades should be supported through structured migration guidance.
+
+Migration support may include:
+
+- Version comparison documentation.
+- Upgrade guides.
+- Example requests and responses.
+- Compatibility notes.
+- Transition timelines.
+- Validation tools where appropriate.
+
+Well-planned migrations reduce operational risk.
+
+---
+
+# Version Coexistence
+
+Multiple API versions may operate simultaneously.
+
+Example:
+
+```text
+Client A → API v1
+
+Client B → API v2
+
+Client C → API v3
+```
+
+Independent version support enables gradual client adoption without interrupting existing integrations.
+
+---
+
+# Documentation by Version
+
+Every supported version should maintain independent documentation.
+
+Documentation should include:
+
+- Available endpoints.
+- Request formats.
+- Response formats.
+- Authentication requirements.
+- Version-specific behavior.
+- Migration guidance.
+
+Separate documentation prevents ambiguity across versions.
+
+---
+
+# Version Governance
+
+Version management should follow consistent governance practices.
+
+Governance activities include:
+
+- Version approval.
+- Architectural review.
+- Change impact assessment.
+- Documentation review.
+- Deprecation planning.
+- Release communication.
+
+Governance ensures controlled and predictable API evolution.
+
+---
+
+# Testing Across Versions
+
+Supported API versions should be validated independently.
+
+Testing includes:
+
+- Functional testing.
+- Regression testing.
+- Compatibility verification.
+- Authentication validation.
+- Performance testing.
+- Integration testing.
+
+Independent validation maintains confidence in version stability.
+
+---
+
+# Monitoring
+
+Operational monitoring should distinguish between API versions.
+
+Examples include:
+
+- Version usage.
+- Error rates.
+- Client adoption.
+- Deprecated version usage.
+- Performance metrics.
+- Migration progress.
+
+Version-specific monitoring supports informed lifecycle decisions.
+
+---
+
+# Scalability Considerations
+
+The versioning architecture supports future growth through:
+
+- Independent version deployment.
+- Modular API evolution.
+- Controlled retirement.
+- Flexible migration planning.
+- Enterprise governance.
+- Long-term maintainability.
+
+These characteristics allow the API ecosystem to evolve without disrupting operational services.
+
+---
+
+# Future Enhancements
+
+Future versioning improvements may include:
+
+- Automated version compatibility analysis.
+- AI-assisted migration guidance.
+- Semantic version support for internal APIs.
+- Intelligent deprecation notifications.
+- Automated client compatibility reporting.
+- Version lifecycle analytics.
+- Policy-driven API governance.
+
+These enhancements improve API evolution while reducing operational complexity.
+
+---
+
+# Best Practices
+
+HealthConnect AI follows these API versioning best practices:
+
+- Introduce new versions only for breaking changes.
+- Preserve backward compatibility wherever practical.
+- Document every supported version independently.
+- Provide clear migration guidance.
+- Maintain predictable deprecation timelines.
+- Monitor version adoption continuously.
+- Govern version lifecycles consistently.
+- Design APIs for long-term evolution.
+
+---
+
+# Guiding Principle
+
+The API Versioning Strategy establishes a structured framework for the long-term evolution of HealthConnect AI APIs by enabling controlled change management, preserving backward compatibility, supporting multiple concurrent API generations, and providing predictable migration pathways. Through disciplined version governance and enterprise lifecycle management, the platform ensures that innovation can continue without compromising the stability, reliability, or interoperability of AI-assisted healthcare services.
+
+---
+
+# Error Handling & Status Codes
+
+The Error Handling & Status Codes architecture defines how HealthConnect AI communicates failures, validation issues, authorization problems, and unexpected system conditions through standardized API responses. Consistent error reporting enables clients to identify failures quickly, respond appropriately, and provide meaningful feedback to end users.
+
+Healthcare systems require predictable error communication because failures may occur during critical workflows such as emergency requests, ambulance dispatch, AI-assisted assessments, medical record retrieval, or administrative operations. A standardized error handling framework improves reliability, simplifies troubleshooting, and supports enterprise observability.
+
+The objective is to ensure that every API response clearly communicates the outcome of a request while maintaining consistency across all platform services.
+
+---
+
+# Objectives
+
+The Error Handling & Status Codes architecture aims to:
+
+- Standardize error communication.
+- Improve developer experience.
+- Simplify client-side error handling.
+- Support operational monitoring.
+- Enable effective debugging.
+- Maintain predictable API behavior.
+- Improve system observability.
+- Support enterprise-scale reliability.
+
+---
+
+# Error Handling Principles
+
+HealthConnect AI follows several guiding principles for error handling.
+
+These include:
+
+- Use appropriate HTTP status codes.
+- Return structured error responses.
+- Avoid exposing internal implementation details.
+- Provide meaningful error descriptions.
+- Support request traceability.
+- Maintain consistency across all APIs.
+
+Errors should help clients resolve issues without revealing sensitive system information.
+
+---
+
+# Standard Error Response
+
+Error responses should follow a consistent structure.
+
+Example:
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "RESOURCE_NOT_FOUND",
+    "message": "The requested hospital could not be located."
+  },
+  "timestamp": "2026-08-01T12:45:18Z",
+  "requestId": "REQ-9A83B2"
+}
+```
+
+A standardized structure simplifies automated error processing and troubleshooting.
+
+---
+
+# Error Response Components
+
+Typical error responses include:
+
+| Component | Purpose |
+|-----------|---------|
+| success | Indicates operation failure |
+| error.code | Machine-readable error identifier |
+| error.message | Human-readable description |
+| timestamp | Time the error occurred |
+| requestId | Identifier for tracing the request |
+
+Additional metadata may be included where operationally beneficial.
+
+---
+
+# HTTP Status Code Standards
+
+The platform should use standard HTTP status codes consistently.
+
+| Status Code | Meaning | Typical Scenario |
+|-------------|---------|------------------|
+| 200 OK | Successful request | Resource retrieved |
+| 201 Created | Resource created | Emergency request submitted |
+| 204 No Content | Successful operation without body | Resource deleted |
+| 400 Bad Request | Invalid client request | Malformed request payload |
+| 401 Unauthorized | Authentication required | Missing or invalid token |
+| 403 Forbidden | Access denied | Insufficient permissions |
+| 404 Not Found | Requested resource unavailable | Unknown patient or hospital |
+| 405 Method Not Allowed | Unsupported HTTP method | Invalid endpoint operation |
+| 409 Conflict | Resource state conflict | Duplicate request or conflicting update |
+| 422 Unprocessable Entity | Validation or business rule failure | Invalid healthcare data |
+| 429 Too Many Requests | Rate limit exceeded | Excessive API usage |
+| 500 Internal Server Error | Unexpected server failure | Unhandled platform exception |
+| 503 Service Unavailable | Temporary service interruption | AI service or backend unavailable |
+
+Status codes should accurately reflect request outcomes.
+
+---
+
+# Validation Errors
+
+Input validation failures should return clear, structured information.
+
+Example:
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "One or more request fields are invalid."
+  },
+  "details": [
+    {
+      "field": "patientId",
+      "issue": "Patient ID is required."
+    },
+    {
+      "field": "priority",
+      "issue": "Priority must be HIGH, MEDIUM, or LOW."
+    }
+  ]
+}
+```
+
+Validation feedback should help clients correct requests efficiently.
+
+---
+
+# Authentication & Authorization Errors
+
+Authentication and authorization failures should be communicated without revealing sensitive security information.
+
+Examples include:
+
+- Missing authentication token.
+- Expired access token.
+- Invalid credentials.
+- Insufficient permissions.
+- Access to restricted resources.
+
+Error messages should remain informative while avoiding disclosure of internal security details.
+
+---
+
+# Business Rule Errors
+
+Some requests may fail because business rules are violated rather than because of technical problems.
+
+Examples include:
+
+- Ambulance unavailable.
+- Hospital at full capacity.
+- Duplicate emergency request.
+- Appointment scheduling conflict.
+- Unsupported treatment workflow.
+
+Business rule failures should return meaningful, domain-specific error codes.
+
+---
+
+# Unexpected System Errors
+
+Unexpected failures should be handled gracefully.
+
+Examples include:
+
+- Internal exceptions.
+- Database connectivity issues.
+- AI inference failures.
+- Network disruptions.
+- Infrastructure outages.
+
+Clients should receive generic error messages while detailed diagnostic information is retained in server logs.
+
+---
+
+# Request Traceability
+
+Every error response should support operational tracing.
+
+Typical tracing information includes:
+
+- Request identifier.
+- Timestamp.
+- Correlation identifier (where applicable).
+
+Traceability enables faster troubleshooting across distributed services.
+
+---
+
+# Logging & Monitoring Integration
+
+Error handling should integrate with platform observability.
+
+Operational monitoring includes:
+
+- Error frequency.
+- Status code distribution.
+- Service failures.
+- Validation trends.
+- Authentication failures.
+- Infrastructure incidents.
+
+Monitoring enables proactive detection of operational issues.
+
+---
+
+# Retry Considerations
+
+Not every error should be retried.
+
+Examples:
+
+Retry may be appropriate for:
+
+- Temporary service unavailability.
+- Network interruptions.
+- Timeout conditions.
+
+Retry should generally not occur for:
+
+- Validation failures.
+- Authentication failures.
+- Authorization failures.
+- Business rule violations.
+
+Clients should distinguish between transient and permanent failures.
+
+---
+
+# Error Code Governance
+
+Error codes should remain stable across API versions.
+
+Guidelines include:
+
+- Use descriptive identifiers.
+- Avoid duplicate meanings.
+- Document all public error codes.
+- Preserve compatibility where practical.
+- Maintain centralized governance.
+
+Stable error codes improve automation and client reliability.
+
+---
+
+# Scalability Considerations
+
+The error handling framework supports enterprise growth through:
+
+- Uniform error structures.
+- Consistent status code usage.
+- Distributed request tracing.
+- Centralized monitoring.
+- Standardized diagnostics.
+- Cross-service consistency.
+
+These characteristics improve operational reliability as the platform expands.
+
+---
+
+# Future Enhancements
+
+Future improvements may include:
+
+- Localized error messages.
+- AI-assisted troubleshooting suggestions.
+- Intelligent client recovery guidance.
+- Enhanced diagnostic metadata.
+- Error analytics dashboards.
+- Automated incident correlation.
+- Predictive failure detection.
+
+These enhancements improve both developer experience and operational resilience.
+
+---
+
+# Best Practices
+
+HealthConnect AI follows these error handling best practices:
+
+- Use standard HTTP status codes consistently.
+- Return structured error responses.
+- Avoid exposing internal implementation details.
+- Provide actionable validation feedback.
+- Support request traceability.
+- Log server-side diagnostic information.
+- Maintain stable error codes.
+- Design for operational observability.
+
+---
+
+# Guiding Principle
+
+The Error Handling & Status Codes architecture establishes a consistent framework for communicating failures across HealthConnect AI by combining standardized HTTP status codes, structured error responses, meaningful diagnostics, secure messaging, and comprehensive request traceability. Through predictable error communication and enterprise-grade observability, the platform enables reliable client integration, efficient troubleshooting, and resilient operation across AI-assisted healthcare services.
+
+---
+
