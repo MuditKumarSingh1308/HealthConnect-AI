@@ -615,3 +615,293 @@ The Deployment Design Principles provide the architectural foundation for every 
 
 ---
 
+# High-Level Deployment Architecture
+
+The High-Level Deployment Architecture illustrates how the major deployment components of HealthConnect AI are organized and interconnected within the operational environment. It provides a platform-wide view of the infrastructure responsible for delivering secure, scalable, and reliable AI-assisted healthcare services.
+
+The deployment model separates presentation, business logic, artificial intelligence, data management, storage, networking, monitoring, and operational services into independently managed deployment units. This modular architecture improves scalability, simplifies maintenance, strengthens security boundaries, and enables individual platform components to evolve without affecting the entire system.
+
+Although the current implementation supports development and demonstration deployments, the architecture is intentionally designed to support future enterprise-scale production environments.
+
+---
+
+# Objectives
+
+The High-Level Deployment Architecture aims to:
+
+- Visualize the overall deployment landscape.
+- Define deployment boundaries.
+- Separate operational responsibilities.
+- Support independent component deployment.
+- Enable infrastructure scalability.
+- Improve operational resilience.
+- Strengthen deployment security.
+- Establish a foundation for future deployment evolution.
+
+---
+
+# High-Level Deployment Diagram
+
+```text
+                                Users
+                                  │
+                                  ▼
+                          Internet / HTTPS
+                                  │
+                                  ▼
+                      CDN / Load Balancer (Future)
+                                  │
+                                  ▼
+                         Frontend Application
+                           (Next.js Client)
+                                  │
+                        HTTPS / REST APIs
+                                  │
+                                  ▼
+                           API Gateway Layer
+                                  │
+          ┌───────────────────────┼────────────────────────┐
+          ▼                       ▼                        ▼
+   Backend API Service      AI Service Layer      Background Workers
+      (FastAPI)          (Inference Services)   (Scheduled Tasks)
+          │                       │                        │
+          └───────────────┬───────┴───────────────┬────────┘
+                          ▼                       ▼
+                 Database Service         Object/File Storage
+                          │
+                          ▼
+                 Backup & Recovery System
+                          │
+                          ▼
+            Monitoring • Logging • Alerting
+```
+
+Each deployment component communicates through secure, well-defined interfaces while remaining operationally independent.
+
+---
+
+# Deployment Layers
+
+The deployment architecture is organized into multiple operational layers.
+
+| Layer | Responsibility |
+|--------|----------------|
+| Client Layer | User interaction through web applications |
+| Edge Layer | HTTPS termination, routing, traffic management |
+| Application Layer | Business logic and API processing |
+| AI Processing Layer | AI inference and healthcare intelligence |
+| Data Layer | Persistent healthcare data storage |
+| Storage Layer | Medical documents and uploaded files |
+| Operations Layer | Monitoring, logging, backups, alerting |
+
+This layered organization improves maintainability and supports independent scaling.
+
+---
+
+# Client Layer
+
+The Client Layer provides the primary interface between users and the platform.
+
+Responsibilities include:
+
+- User interaction.
+- Authentication initiation.
+- Dashboard rendering.
+- Emergency request submission.
+- Healthcare workflow access.
+- Secure communication with backend services.
+
+The client communicates exclusively through secure HTTPS connections.
+
+---
+
+# Edge Layer
+
+The Edge Layer manages incoming traffic before requests reach application services.
+
+Responsibilities include:
+
+- HTTPS termination.
+- Request routing.
+- Traffic distribution.
+- Future load balancing.
+- CDN integration.
+- Initial security enforcement.
+
+Future production deployments may incorporate additional edge security services such as Web Application Firewalls (WAFs) and DDoS protection.
+
+---
+
+# Application Layer
+
+The Application Layer contains the platform's business logic.
+
+Responsibilities include:
+
+- API processing.
+- Authentication.
+- Authorization.
+- Emergency workflow management.
+- Healthcare service coordination.
+- Communication with AI and data services.
+
+Application services remain stateless wherever practical, supporting horizontal scaling.
+
+---
+
+# AI Processing Layer
+
+The AI Processing Layer provides intelligent healthcare capabilities.
+
+Responsibilities include:
+
+- AI triage.
+- Medical report analysis.
+- Hospital recommendations.
+- Emergency planning assistance.
+- AI request validation.
+- Secure inference execution.
+
+AI services are deployed independently, allowing future model upgrades without impacting core backend services.
+
+---
+
+# Data Layer
+
+The Data Layer stores structured operational information.
+
+Examples include:
+
+- User accounts.
+- Patient profiles.
+- Healthcare providers.
+- Emergency requests.
+- AI metadata.
+- Audit records.
+- System configuration.
+
+The database remains isolated behind backend services and is not directly accessible by client applications.
+
+---
+
+# Storage Layer
+
+The Storage Layer manages unstructured information.
+
+Examples include:
+
+- Medical reports.
+- Uploaded documents.
+- Images.
+- Supporting healthcare files.
+- Backup artifacts.
+
+Storage services are logically separated from structured database systems to improve scalability and lifecycle management.
+
+---
+
+# Operations Layer
+
+The Operations Layer supports platform administration and operational visibility.
+
+Responsibilities include:
+
+- Monitoring.
+- Centralized logging.
+- Alert generation.
+- Backup management.
+- Infrastructure health checks.
+- Operational analytics.
+
+Operational services improve reliability while supporting proactive platform management.
+
+---
+
+# External Integrations
+
+The deployment architecture is designed to support secure integration with external healthcare systems.
+
+Potential integrations include:
+
+- Hospital Information Systems (HIS).
+- Ambulance dispatch systems.
+- Blood bank services.
+- Government healthcare services.
+- Notification providers.
+- Identity providers.
+
+External services communicate through authenticated and encrypted interfaces.
+
+---
+
+# Deployment Characteristics
+
+The deployment architecture demonstrates the following characteristics:
+
+- Modular deployment.
+- Independent scaling.
+- Cloud-native readiness.
+- Secure communication.
+- Operational isolation.
+- High maintainability.
+- Infrastructure flexibility.
+- Future enterprise scalability.
+
+These characteristics support long-term platform evolution without significant architectural restructuring.
+
+---
+
+# Scalability Considerations
+
+The architecture supports incremental infrastructure expansion.
+
+Scalability features include:
+
+- Independent service deployment.
+- Horizontal application scaling.
+- Dedicated AI infrastructure.
+- Elastic storage.
+- Distributed monitoring.
+- Future multi-region deployment.
+
+These capabilities enable the platform to accommodate increasing healthcare demand while maintaining operational efficiency.
+
+---
+
+# Future Enhancements
+
+Future deployment architecture improvements may include:
+
+- Kubernetes orchestration.
+- Service mesh integration.
+- Global load balancing.
+- Multi-region deployments.
+- Edge computing for AI inference.
+- Event-driven microservices.
+- Serverless background processing.
+
+These enhancements provide a clear path toward enterprise-scale deployment maturity.
+
+---
+
+# Best Practices
+
+HealthConnect AI follows these deployment architecture best practices:
+
+- Separate major platform components.
+- Minimize coupling between deployment units.
+- Protect internal services through secure communication.
+- Isolate data and storage services.
+- Centralize monitoring and logging.
+- Design for independent scalability.
+- Maintain modular deployment boundaries.
+- Continuously evolve deployment architecture.
+
+---
+
+# Guiding Principle
+
+The High-Level Deployment Architecture provides a unified operational blueprint for HealthConnect AI by organizing frontend applications, backend services, AI components, databases, storage systems, networking infrastructure, and operational services into independently deployable and securely connected layers. This modular deployment model establishes a scalable, resilient, and cloud-ready foundation capable of supporting future enterprise healthcare operations while maintaining security, maintainability, and operational excellence.
+
+---
+
