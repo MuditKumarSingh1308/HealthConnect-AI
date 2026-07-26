@@ -905,3 +905,922 @@ The High-Level Deployment Architecture provides a unified operational blueprint 
 
 ---
 
+# Environment Strategy
+
+The Environment Strategy defines how HealthConnect AI separates development, testing, staging, and production environments throughout the software development lifecycle. Environment isolation ensures that new features, infrastructure changes, and security improvements can be developed, tested, validated, and deployed without compromising platform stability or patient data.
+
+Healthcare platforms require highly controlled deployment processes because software defects may directly affect emergency services, healthcare workflows, and sensitive medical information. By maintaining clearly separated environments, HealthConnect AI minimizes deployment risk while supporting continuous delivery and future enterprise operations.
+
+Each environment serves a distinct operational purpose with dedicated infrastructure, configuration, credentials, and monitoring capabilities.
+
+---
+
+# Objectives
+
+The Environment Strategy aims to:
+
+- Separate development from production.
+- Reduce deployment risk.
+- Protect production healthcare data.
+- Support reliable software testing.
+- Enable controlled release management.
+- Maintain configuration consistency.
+- Improve operational stability.
+- Support future enterprise deployment practices.
+
+---
+
+# Environment Lifecycle
+
+HealthConnect AI follows a progressive deployment workflow.
+
+```text
+Development
+      │
+      ▼
+Testing
+      │
+      ▼
+Staging
+      │
+      ▼
+Production
+```
+
+Each stage introduces additional validation before software reaches production users.
+
+---
+
+# Environment Overview
+
+| Environment | Primary Purpose |
+|-------------|-----------------|
+| Development | Feature implementation and local development |
+| Testing | Functional, integration, and validation testing |
+| Staging | Production-like verification before release |
+| Production | Live healthcare services |
+
+Each environment operates independently to prevent unintended interference.
+
+---
+
+# Development Environment
+
+The Development Environment supports active software development.
+
+Responsibilities include:
+
+- Feature implementation.
+- Local debugging.
+- Initial API integration.
+- AI experimentation.
+- UI development.
+- Unit testing.
+
+Characteristics include:
+
+- Developer-managed infrastructure.
+- Mock or sample datasets.
+- Frequent deployments.
+- Rapid iteration.
+- Flexible configuration.
+
+Development environments prioritize productivity while remaining isolated from operational systems.
+
+---
+
+# Testing Environment
+
+The Testing Environment validates application behavior.
+
+Testing activities include:
+
+- Functional testing.
+- Integration testing.
+- API validation.
+- Security testing.
+- Performance verification.
+- AI feature validation.
+
+Testing environments should use controlled datasets and avoid unnecessary access to production information.
+
+---
+
+# Staging Environment
+
+The Staging Environment closely resembles the production environment.
+
+Responsibilities include:
+
+- Final release validation.
+- User acceptance testing.
+- Deployment verification.
+- Infrastructure validation.
+- Configuration testing.
+- Operational readiness assessment.
+
+Staging provides confidence that software will behave predictably after production deployment.
+
+---
+
+# Production Environment
+
+The Production Environment delivers healthcare services to end users.
+
+Characteristics include:
+
+- Stable infrastructure.
+- Controlled deployments.
+- Strong security controls.
+- Continuous monitoring.
+- Backup systems.
+- Operational support.
+
+Production changes are introduced through controlled deployment procedures.
+
+---
+
+# Environment Isolation
+
+Each environment maintains strict operational separation.
+
+Isolation includes:
+
+- Independent infrastructure.
+- Separate databases.
+- Environment-specific credentials.
+- Dedicated configuration.
+- Independent monitoring.
+- Separate storage resources.
+
+Environment isolation prevents accidental interaction between development and production systems.
+
+---
+
+# Configuration Management
+
+Each environment maintains its own configuration.
+
+Examples include:
+
+- Database connections.
+- API endpoints.
+- Authentication settings.
+- AI service configuration.
+- Feature flags.
+- Logging levels.
+
+Configuration values remain external to application code and are managed securely.
+
+---
+
+# Data Management
+
+Healthcare information must be handled differently across environments.
+
+Guidelines include:
+
+- Development uses synthetic or anonymized data.
+- Testing uses controlled datasets.
+- Staging uses representative non-production data where practical.
+- Production stores authorized operational healthcare information.
+
+Production patient data should never be copied into lower environments without appropriate authorization and safeguards.
+
+---
+
+# Deployment Promotion Strategy
+
+Software progresses through environments using a controlled promotion process.
+
+```text
+Code Development
+        │
+        ▼
+Automated Testing
+        │
+        ▼
+Testing Environment
+        │
+        ▼
+Staging Validation
+        │
+        ▼
+Production Deployment
+```
+
+Each promotion stage includes validation activities before progression.
+
+---
+
+# Access Control
+
+Access permissions vary across environments.
+
+| Environment | Typical Access |
+|-------------|----------------|
+| Development | Developers |
+| Testing | Developers and QA personnel |
+| Staging | Developers, QA, Release Managers |
+| Production | Authorized operations personnel |
+
+Access follows the principle of least privilege.
+
+---
+
+# Monitoring Strategy
+
+Each environment supports monitoring appropriate to its purpose.
+
+Examples include:
+
+- Development: Basic debugging and logs.
+- Testing: Functional validation and test metrics.
+- Staging: Deployment validation and operational checks.
+- Production: Full monitoring, alerting, audit logging, and performance analytics.
+
+Monitoring capabilities increase as environments approach production.
+
+---
+
+# Release Management
+
+Deployment between environments follows structured release practices.
+
+Release activities include:
+
+- Version identification.
+- Deployment approval.
+- Validation testing.
+- Rollback preparation.
+- Release documentation.
+- Post-deployment verification.
+
+Controlled releases reduce operational risk while improving deployment reliability.
+
+---
+
+# Scalability Considerations
+
+The Environment Strategy supports future platform growth.
+
+Scalability features include:
+
+- Independent infrastructure provisioning.
+- Automated environment creation.
+- Cloud-native deployment.
+- Environment-specific scaling.
+- Infrastructure automation.
+- Future multi-region environment support.
+
+These capabilities allow the deployment process to evolve alongside platform expansion.
+
+---
+
+# Future Enhancements
+
+Future environment management improvements may include:
+
+- Ephemeral preview environments.
+- Infrastructure as Code (IaC) provisioning.
+- Automated environment validation.
+- Environment drift detection.
+- Policy-based environment governance.
+- Self-service development environments.
+- AI-assisted deployment verification.
+
+These enhancements improve deployment consistency, operational efficiency, and release confidence.
+
+---
+
+# Best Practices
+
+HealthConnect AI follows these environment management best practices:
+
+- Maintain strict environment isolation.
+- Use environment-specific configuration.
+- Protect production data.
+- Validate software before production deployment.
+- Restrict access according to operational roles.
+- Monitor every environment appropriately.
+- Automate environment provisioning where practical.
+- Promote releases through controlled deployment stages.
+
+---
+
+# Guiding Principle
+
+The Environment Strategy ensures that HealthConnect AI maintains secure, isolated, and purpose-driven deployment environments throughout the software development lifecycle. By separating development, testing, staging, and production operations while enforcing controlled promotion, configuration management, environment-specific security, and structured release practices, the platform establishes a reliable foundation for delivering safe, scalable, and resilient AI-assisted healthcare services.
+
+---
+
+# Frontend Deployment
+
+The Frontend Deployment architecture defines how the HealthConnect AI web application is packaged, hosted, configured, secured, and delivered to end users. As the primary interface for patients, healthcare providers, administrators, and other stakeholders, the frontend must provide a responsive, reliable, and secure user experience across supported devices and networks.
+
+HealthConnect AI uses a modern web application architecture based on **Next.js**, enabling server-side rendering (SSR), static site generation (SSG), client-side rendering (CSR), and API integration where appropriate. The deployment strategy separates frontend hosting from backend services, allowing each layer to evolve, scale, and deploy independently.
+
+This separation improves operational flexibility, deployment efficiency, fault isolation, and long-term maintainability.
+
+---
+
+# Objectives
+
+The Frontend Deployment architecture aims to:
+
+- Deliver a fast and responsive user experience.
+- Support secure client-server communication.
+- Enable independent frontend deployments.
+- Improve application availability.
+- Optimize global content delivery.
+- Simplify frontend maintenance.
+- Support scalable web hosting.
+- Establish a production-ready frontend deployment model.
+
+---
+
+# Frontend Deployment Architecture
+
+```text
+                  Users
+                    │
+                    ▼
+             Internet / HTTPS
+                    │
+                    ▼
+          CDN / Edge Network (Future)
+                    │
+                    ▼
+          Next.js Frontend Application
+                    │
+             HTTPS REST APIs
+                    │
+                    ▼
+              API Gateway Layer
+                    │
+                    ▼
+              Backend Services
+```
+
+The frontend communicates exclusively with backend APIs over encrypted HTTPS connections.
+
+---
+
+# Frontend Responsibilities
+
+The frontend is responsible for:
+
+- User interface rendering.
+- User authentication initiation.
+- Dashboard presentation.
+- Emergency request submission.
+- Medical report upload.
+- AI feature interaction.
+- Real-time user feedback.
+- Secure communication with backend services.
+
+Business logic and sensitive data processing remain on backend systems.
+
+---
+
+# Deployment Model
+
+The frontend is deployed independently from backend services.
+
+Deployment characteristics include:
+
+- Independent release cycle.
+- Separate hosting environment.
+- Static asset optimization.
+- Environment-specific configuration.
+- Independent scaling.
+- Minimal deployment dependencies.
+
+Independent deployment enables UI improvements without requiring backend redeployment.
+
+---
+
+# Build Process
+
+The frontend build process prepares the application for deployment.
+
+Typical stages include:
+
+```text
+Source Code
+      │
+      ▼
+Dependency Installation
+      │
+      ▼
+Application Build
+      │
+      ▼
+Static Asset Generation
+      │
+      ▼
+Deployment Package
+      │
+      ▼
+Hosting Platform
+```
+
+Build automation ensures consistent deployment artifacts across environments.
+
+---
+
+# Static Asset Management
+
+Frontend static assets include:
+
+- Images.
+- Icons.
+- Fonts.
+- CSS files.
+- JavaScript bundles.
+- Application metadata.
+
+Optimization techniques include:
+
+- Asset compression.
+- Cache optimization.
+- Code splitting.
+- Lazy loading.
+- Minification.
+
+These optimizations improve application performance and reduce network overhead.
+
+---
+
+# Environment Configuration
+
+The frontend uses environment-specific configuration values.
+
+Examples include:
+
+- Backend API URL.
+- Authentication endpoints.
+- Feature flags.
+- Analytics configuration.
+- Logging configuration.
+- Environment identifiers.
+
+Configuration is externalized and injected during deployment rather than embedded in application source code.
+
+---
+
+# Client-Server Communication
+
+All communication between frontend and backend services follows secure communication principles.
+
+Characteristics include:
+
+- HTTPS encryption.
+- REST API communication.
+- JWT authentication.
+- Request validation.
+- Error handling.
+- Secure session management.
+
+The frontend never communicates directly with databases or internal infrastructure.
+
+---
+
+# Security Considerations
+
+Frontend deployment incorporates multiple security controls.
+
+Examples include:
+
+- HTTPS enforcement.
+- Secure authentication flow.
+- Content Security Policy (future enhancement).
+- Secure HTTP headers.
+- Input validation before submission.
+- Cross-Origin Resource Sharing (CORS) support through backend configuration.
+
+Sensitive business logic remains on trusted backend services.
+
+---
+
+# Performance Optimization
+
+Deployment architecture supports frontend performance optimization.
+
+Optimization techniques include:
+
+- Static asset caching.
+- Route prefetching.
+- Image optimization.
+- Incremental loading.
+- Bundle optimization.
+- Efficient API communication.
+
+These optimizations improve responsiveness across different network conditions.
+
+---
+
+# Monitoring
+
+Frontend operations are continuously monitored.
+
+Examples include:
+
+- Application availability.
+- Page load performance.
+- Client-side errors.
+- API communication failures.
+- User experience metrics.
+- Deployment status.
+
+Monitoring enables proactive identification of frontend issues.
+
+---
+
+# Deployment Workflow
+
+Frontend releases follow a structured deployment process.
+
+```text
+Source Code
+      │
+      ▼
+Build Validation
+      │
+      ▼
+Testing
+      │
+      ▼
+Deployment
+      │
+      ▼
+Verification
+      │
+      ▼
+Production Release
+```
+
+Deployment validation reduces the likelihood of production issues.
+
+---
+
+# Scalability Considerations
+
+Frontend deployment supports future platform expansion.
+
+Scalability features include:
+
+- Independent frontend scaling.
+- CDN integration.
+- Stateless application hosting.
+- Global edge delivery.
+- Efficient caching.
+- Cloud-native deployment.
+
+These capabilities enable consistent performance as user traffic increases.
+
+---
+
+# Future Enhancements
+
+Future frontend deployment improvements may include:
+
+- Global CDN distribution.
+- Edge rendering.
+- Progressive Web App (PWA) support.
+- Offline capabilities.
+- Blue-green deployments.
+- Canary releases.
+- Advanced performance analytics.
+
+These enhancements improve resilience, user experience, and deployment flexibility.
+
+---
+
+# Best Practices
+
+HealthConnect AI follows these frontend deployment best practices:
+
+- Separate frontend and backend deployments.
+- Deliver all traffic over HTTPS.
+- Optimize static assets.
+- Externalize environment configuration.
+- Monitor frontend performance continuously.
+- Minimize client-side processing of sensitive information.
+- Validate deployments before release.
+- Design for independent scalability.
+
+---
+
+# Guiding Principle
+
+The Frontend Deployment architecture ensures that HealthConnect AI delivers a secure, responsive, and scalable web experience through an independently deployable Next.js application. By combining modern frontend deployment practices, optimized asset delivery, secure API communication, environment-specific configuration, continuous monitoring, and cloud-native scalability, the platform establishes a reliable presentation layer capable of supporting future enterprise healthcare operations while maintaining excellent user experience and operational flexibility.
+
+---
+
+# Backend Deployment
+
+The Backend Deployment architecture defines how the HealthConnect AI backend services are packaged, deployed, configured, secured, monitored, and operated. The backend serves as the central processing layer responsible for executing business logic, coordinating AI services, managing healthcare workflows, enforcing security policies, and providing secure access to platform data.
+
+HealthConnect AI utilizes a **FastAPI**-based backend architecture that exposes RESTful APIs consumed by frontend applications and future external healthcare systems. The backend remains stateless wherever practical, enabling independent deployment, horizontal scaling, and simplified operational management.
+
+By separating backend deployment from frontend hosting and AI processing, the platform achieves improved scalability, fault isolation, maintainability, and deployment flexibility.
+
+---
+
+# Objectives
+
+The Backend Deployment architecture aims to:
+
+- Provide reliable API services.
+- Execute healthcare business logic securely.
+- Coordinate AI processing workflows.
+- Support independent backend deployments.
+- Enable horizontal scalability.
+- Improve operational resilience.
+- Protect healthcare data.
+- Establish a production-ready backend deployment model.
+
+---
+
+# Backend Deployment Architecture
+
+```text
+                 API Gateway
+                      │
+                      ▼
+              FastAPI Backend Service
+                      │
+     ┌────────────────┼────────────────┐
+     ▼                ▼                ▼
+Authentication   Business Logic   AI Orchestration
+     │                │                │
+     └────────────┬───┴────────────────┘
+                  ▼
+         Database & Storage Services
+                  │
+                  ▼
+      Monitoring • Logging • Auditing
+```
+
+The backend operates as the central coordination layer between users, AI services, and persistent data.
+
+---
+
+# Backend Responsibilities
+
+The backend is responsible for:
+
+- API request processing.
+- Authentication.
+- Authorization.
+- Healthcare workflow execution.
+- AI service coordination.
+- Database access.
+- File management.
+- Audit logging.
+- Notification orchestration.
+- Business rule enforcement.
+
+Sensitive processing is performed exclusively within trusted backend services.
+
+---
+
+# Deployment Model
+
+The backend is deployed independently from other platform components.
+
+Deployment characteristics include:
+
+- Independent release cycle.
+- Stateless service instances.
+- Environment-specific configuration.
+- Container-friendly deployment.
+- Horizontal scalability.
+- Independent operational monitoring.
+
+This deployment model allows backend updates without affecting frontend hosting.
+
+---
+
+# Service Architecture
+
+The backend consists of modular services organized around functional responsibilities.
+
+Examples include:
+
+- Authentication services.
+- Patient services.
+- Hospital services.
+- Emergency services.
+- AI orchestration.
+- Medical report services.
+- Administration services.
+- Notification services.
+
+Logical separation improves maintainability while supporting future service decomposition if required.
+
+---
+
+# Request Processing
+
+Incoming requests follow a structured processing pipeline.
+
+```text
+HTTPS Request
+      │
+      ▼
+Authentication
+      │
+      ▼
+Authorization
+      │
+      ▼
+Request Validation
+      │
+      ▼
+Business Logic
+      │
+      ▼
+Database / AI Services
+      │
+      ▼
+Response Generation
+```
+
+This pipeline ensures secure, predictable, and consistent request handling.
+
+---
+
+# Configuration Management
+
+Backend configuration remains external to application code.
+
+Typical configuration includes:
+
+- Database connections.
+- API credentials.
+- JWT configuration.
+- AI service endpoints.
+- Storage configuration.
+- Logging settings.
+- Environment variables.
+
+Secure configuration management simplifies deployments while reducing operational risk.
+
+---
+
+# Background Processing
+
+Certain workloads are executed outside the request-response lifecycle.
+
+Examples include:
+
+- Notification delivery.
+- Scheduled maintenance tasks.
+- Report generation.
+- Data synchronization.
+- Cleanup operations.
+- Future asynchronous AI processing.
+
+Background workers improve responsiveness by offloading long-running tasks.
+
+---
+
+# Health Checks
+
+Backend services continuously expose operational health information.
+
+Health monitoring may include:
+
+- Service availability.
+- Database connectivity.
+- Storage availability.
+- AI service reachability.
+- Memory utilization.
+- Response latency.
+
+Health endpoints assist load balancers and monitoring systems in identifying service issues.
+
+---
+
+# Security Considerations
+
+Backend deployment incorporates multiple security controls.
+
+Examples include:
+
+- HTTPS-only communication.
+- JWT authentication.
+- Role-based authorization.
+- Secure secret management.
+- Request validation.
+- Rate limiting.
+- Audit logging.
+- Input sanitization.
+
+The backend acts as the trusted enforcement point for platform security policies.
+
+---
+
+# Monitoring
+
+Operational visibility is maintained through continuous monitoring.
+
+Examples include:
+
+- API response times.
+- Error rates.
+- Request throughput.
+- Resource utilization.
+- Authentication failures.
+- AI service interactions.
+- Database performance.
+- Background job execution.
+
+Monitoring enables rapid detection and resolution of operational issues.
+
+---
+
+# Deployment Workflow
+
+Backend deployments follow a controlled release process.
+
+```text
+Source Code
+      │
+      ▼
+Dependency Installation
+      │
+      ▼
+Automated Testing
+      │
+      ▼
+Build Validation
+      │
+      ▼
+Deployment
+      │
+      ▼
+Health Verification
+      │
+      ▼
+Production Release
+```
+
+Validation at each stage improves deployment reliability.
+
+---
+
+# Scalability Considerations
+
+Backend deployment supports enterprise growth through:
+
+- Stateless service instances.
+- Horizontal scaling.
+- Independent resource allocation.
+- Load balancing.
+- Container orchestration readiness.
+- Cloud-native deployment.
+
+These capabilities allow API capacity to expand as healthcare demand increases.
+
+---
+
+# Future Enhancements
+
+Future backend deployment improvements may include:
+
+- Kubernetes orchestration.
+- Service mesh integration.
+- Distributed caching.
+- Event-driven processing.
+- Serverless background workers.
+- Auto-scaling policies.
+- Advanced traffic management.
+
+These enhancements improve resilience, scalability, and operational efficiency.
+
+---
+
+# Best Practices
+
+HealthConnect AI follows these backend deployment best practices:
+
+- Keep backend services stateless where practical.
+- Separate business logic from infrastructure.
+- Externalize configuration.
+- Validate every request.
+- Monitor operational health continuously.
+- Secure all service communications.
+- Automate backend deployments.
+- Design for independent scalability.
+
+---
+
+# Guiding Principle
+
+The Backend Deployment architecture establishes FastAPI as the secure and scalable operational core of HealthConnect AI. By combining stateless service design, modular business logic, secure request processing, AI orchestration, externalized configuration, continuous monitoring, and cloud-native deployment practices, the backend provides a resilient foundation capable of supporting current healthcare workflows and future enterprise-scale platform growth.
+
+---
+
