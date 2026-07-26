@@ -9,7 +9,13 @@
 
 # Mission
 
-> *(We'll write this together.)*
+> *(HealthConnect AI exists to reduce delays in accessing critical healthcare by intelligently connecting patients, healthcare providers, and emergency services through technology.
+
+We believe that no family should lose precious time during a medical emergency because critical information, healthcare resources, or emergency services were difficult to access when they were needed most.
+
+Our mission is to help people reach the right medical care at the right time by providing AI-assisted guidance, improving coordination between healthcare stakeholders, and making essential medical information more accessible during emergencies.
+
+Rather than replacing healthcare professionals, HealthConnect AI is designed to support patients, families, hospitals, and public healthcare systems with faster decision-making, better resource visibility, and smarter emergency response.)*
 
 ---
 
