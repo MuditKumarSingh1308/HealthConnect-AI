@@ -43,30 +43,30 @@
 
 ## The Challenge
 
-Medical emergencies require fast and informed decisions, yet patients, families, hospitals, and healthcare authorities often lack access to reliable real-time healthcare information. Critical details such as hospital bed availability, specialist availability, ambulance status, blood inventory, and medical resource utilization are frequently fragmented, unavailable, or outdated, making it difficult to determine the most appropriate immediate response.
+> Medical emergencies require fast and informed decisions, yet patients, families, hospitals, and healthcare authorities often lack access to reliable real-time healthcare information. Critical details such as hospital bed availability, specialist availability, ambulance status, blood inventory, and medical resource utilization are frequently fragmented, unavailable, or outdated, making it difficult to determine the most appropriate immediate response.
 
 ## Key Problems
 
-### 1. Lack of Real-Time Healthcare Information
+> ### 1. Lack of Real-Time Healthcare Information
 Patients often travel long distances to hospitals without knowing whether beds, specialists, or required medical facilities are available. This results in treatment delays, additional financial burden, and unnecessary emotional stress.
 
-### 2. Delayed Medical Decisions
+> ### 2. Delayed Medical Decisions
 Many people ignore early symptoms or delay seeking medical attention because they lack awareness or timely guidance, allowing manageable conditions to become more serious.
 
-### 3. Fragmented Emergency Response
+> ### 3. Fragmented Emergency Response
 During emergencies, patients and families frequently need to coordinate multiple disconnected services such as hospitals, ambulances, blood banks, and diagnostic centers, increasing response time when every minute matters.
 
-### 4. Limited Operational Visibility
+> ### 4. Limited Operational Visibility
 Hospitals often operate with isolated systems for managing beds, doctors, equipment, and other critical resources, making coordination and resource allocation more difficult.
 
-### 5. Limited Insights for Healthcare Planning
+> ### 5. Limited Insights for Healthcare Planning
 Healthcare authorities need better aggregated data to understand demand, identify resource shortages, and support long-term infrastructure planning.
 
 ## Why This Matters
 
-The vision for HealthConnect AI was inspired by real experiences of traveling to major hospitals only to discover that critical resources such as hospital beds were unavailable upon arrival. These experiences highlighted how the absence of real-time healthcare information can delay treatment, increase costs, and place additional stress on patients and their families.
+> The vision for HealthConnect AI was inspired by real experiences of traveling to major hospitals only to discover that critical resources such as hospital beds were unavailable upon arrival. These experiences highlighted how the absence of real-time healthcare information can delay treatment, increase costs, and place additional stress on patients and their families.
 
-HealthConnect AI aims to address these challenges by enabling better healthcare decisions through timely, reliable, and connected information.
+> HealthConnect AI aims to address these challenges by enabling better healthcare decisions through timely, reliable, and connected information.
 
 ---
 
