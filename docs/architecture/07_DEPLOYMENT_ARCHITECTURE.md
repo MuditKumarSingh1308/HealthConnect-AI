@@ -1824,3 +1824,299 @@ The Backend Deployment architecture establishes FastAPI as the secure and scalab
 
 ---
 
+# AI Service Deployment
+
+The AI Service Deployment architecture defines how artificial intelligence capabilities are deployed, managed, monitored, and scaled within HealthConnect AI. AI services provide intelligent healthcare functionality such as symptom triage, medical report analysis, hospital recommendations, emergency planning, and future clinical decision support.
+
+Unlike conventional application services, AI workloads may have unique computational requirements, model lifecycle considerations, and inference characteristics. For this reason, AI services are deployed independently from the primary backend, allowing each component to evolve, scale, and operate according to its specific resource requirements.
+
+The deployment architecture is designed to support both the current AI implementation and future expansion to multiple specialized models without requiring significant infrastructure redesign.
+
+---
+
+# Objectives
+
+The AI Service Deployment architecture aims to:
+
+- Provide reliable AI inference.
+- Support independent AI deployments.
+- Enable model version management.
+- Improve inference scalability.
+- Isolate AI workloads from application services.
+- Ensure secure AI processing.
+- Simplify model maintenance.
+- Establish an enterprise-ready AI deployment model.
+
+---
+
+# AI Deployment Architecture
+
+```text
+               Backend Services
+                      │
+               AI Inference Request
+                      │
+                      ▼
+              AI Service Gateway
+                      │
+          ┌───────────┼───────────┐
+          ▼           ▼           ▼
+   Triage Model   Report Model   Recommendation Model
+          │           │           │
+          └───────────┼───────────┘
+                      ▼
+             AI Response Generation
+                      │
+                      ▼
+               Backend Services
+```
+
+Each AI capability is deployed as an independent inference service, enabling modular upgrades and independent scaling.
+
+---
+
+# AI Service Responsibilities
+
+The AI deployment layer is responsible for:
+
+- AI inference.
+- Model execution.
+- Prompt processing.
+- Medical report interpretation.
+- Hospital recommendation generation.
+- Emergency planning assistance.
+- AI request validation.
+- AI response generation.
+- Model version management.
+
+Business workflows remain coordinated by the backend while AI services focus exclusively on intelligent processing.
+
+---
+
+# Deployment Model
+
+AI services are deployed independently from backend APIs.
+
+Deployment characteristics include:
+
+- Independent release cycles.
+- Separate runtime environments.
+- Dedicated computational resources.
+- Modular model hosting.
+- Independent scaling.
+- Isolated operational monitoring.
+
+This separation prevents AI workloads from negatively impacting core application performance.
+
+---
+
+# Model Hosting
+
+AI models are hosted as dedicated inference services.
+
+Model deployment may include:
+
+- Single-model services.
+- Multi-model services.
+- Containerized inference environments.
+- Cloud AI platforms.
+- Future GPU-enabled deployments.
+- Managed inference infrastructure.
+
+The hosting strategy remains flexible to accommodate future AI advancements.
+
+---
+
+# Inference Workflow
+
+AI requests follow a structured processing pipeline.
+
+```text
+Backend Request
+      │
+      ▼
+Request Validation
+      │
+      ▼
+Model Selection
+      │
+      ▼
+AI Inference
+      │
+      ▼
+Response Validation
+      │
+      ▼
+Backend Response
+```
+
+This workflow ensures consistent, secure, and reliable AI interactions.
+
+---
+
+# Resource Management
+
+AI services may require specialized computing resources.
+
+Resource considerations include:
+
+- CPU allocation.
+- GPU acceleration (future).
+- Memory optimization.
+- Model loading strategies.
+- Concurrent inference management.
+- Resource isolation.
+
+Dedicated resource allocation improves inference performance while protecting application stability.
+
+---
+
+# Model Lifecycle Management
+
+AI models evolve independently of application releases.
+
+Lifecycle activities include:
+
+- Model development.
+- Validation.
+- Versioning.
+- Deployment.
+- Monitoring.
+- Retirement.
+
+Independent model lifecycle management enables continuous AI improvement without disrupting platform operations.
+
+---
+
+# Configuration Management
+
+AI deployment uses environment-specific configuration.
+
+Typical configuration includes:
+
+- Model endpoints.
+- API credentials.
+- Inference parameters.
+- Timeout values.
+- Resource limits.
+- Logging settings.
+
+Configuration remains external to application code to simplify deployment and maintenance.
+
+---
+
+# Security Considerations
+
+AI deployment incorporates multiple security measures.
+
+Examples include:
+
+- Authenticated inference requests.
+- Encrypted communication.
+- Prompt validation.
+- Input sanitization.
+- Output validation.
+- Audit logging.
+- Secure model access.
+
+These controls protect AI services from misuse while maintaining trustworthy healthcare assistance.
+
+---
+
+# Monitoring
+
+AI operations require specialized monitoring.
+
+Examples include:
+
+- Inference latency.
+- Request volume.
+- Model availability.
+- Resource utilization.
+- Error rates.
+- Response quality indicators.
+- Model version usage.
+
+Continuous monitoring supports both operational stability and AI performance evaluation.
+
+---
+
+# Deployment Workflow
+
+AI deployments follow a controlled lifecycle.
+
+```text
+Model Development
+        │
+        ▼
+Validation
+        │
+        ▼
+Version Registration
+        │
+        ▼
+Deployment
+        │
+        ▼
+Health Verification
+        │
+        ▼
+Production Inference
+```
+
+Validation before deployment helps ensure reliable and safe AI behavior.
+
+---
+
+# Scalability Considerations
+
+AI deployment supports enterprise-scale inference through:
+
+- Independent service scaling.
+- Dedicated inference instances.
+- Stateless request processing.
+- Load-balanced AI services.
+- Elastic resource allocation.
+- Future GPU clusters.
+
+These capabilities allow AI capacity to grow independently from backend services.
+
+---
+
+# Future Enhancements
+
+Future AI deployment improvements may include:
+
+- Multi-model orchestration.
+- Automatic model routing.
+- GPU-based inference clusters.
+- Edge AI deployment.
+- Federated AI inference.
+- Real-time model monitoring.
+- Continuous model deployment (MLOps).
+
+These enhancements provide a pathway toward enterprise-scale AI operations.
+
+---
+
+# Best Practices
+
+HealthConnect AI follows these AI deployment best practices:
+
+- Deploy AI independently from backend services.
+- Isolate AI resource consumption.
+- Version models separately from application code.
+- Monitor inference performance continuously.
+- Validate AI inputs and outputs.
+- Protect AI endpoints with strong authentication.
+- Maintain secure model access.
+- Design AI infrastructure for independent scalability.
+
+---
+
+# Guiding Principle
+
+The AI Service Deployment architecture establishes artificial intelligence as an independently deployable, scalable, and secure operational component within HealthConnect AI. By separating AI inference from core application services, supporting dedicated resource management, structured model lifecycle management, secure inference workflows, continuous monitoring, and future MLOps capabilities, the platform provides a resilient foundation for delivering trustworthy AI-assisted healthcare services while remaining adaptable to future advances in artificial intelligence.
+
+---
+
