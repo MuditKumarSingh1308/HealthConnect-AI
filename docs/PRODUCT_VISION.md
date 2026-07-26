@@ -66,7 +66,7 @@ Healthcare authorities need better aggregated data to understand demand, identif
 
 > The vision for HealthConnect AI was inspired by real experiences of traveling to major hospitals only to discover that critical resources such as hospital beds were unavailable upon arrival. These experiences highlighted how the absence of real-time healthcare information can delay treatment, increase costs, and place additional stress on patients and their families.
 
-### HealthConnect AI aims to address these challenges by enabling better healthcare decisions through timely, reliable, and connected information.
+> HealthConnect AI aims to address these challenges by enabling better healthcare decisions through timely, reliable, and connected information.
 
 ---
 
