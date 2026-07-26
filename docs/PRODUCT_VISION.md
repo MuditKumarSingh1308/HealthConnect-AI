@@ -268,10 +268,71 @@ HealthConnect AI is not intended to:
 
 # Success Metrics
 
-(To be completed)
+The success of HealthConnect AI will be measured not only by platform adoption but also by its ability to improve healthcare accessibility, coordination, and decision-making.
+
+---
+
+## Patient Experience
+
+- Reduced time required to identify appropriate healthcare facilities.
+- Improved access to real-time healthcare information.
+- Increased awareness of medical conditions through AI-assisted guidance.
+- Higher user satisfaction and trust in healthcare recommendations.
+
+---
+
+## Healthcare Coordination
+
+- Increased participation of hospitals, doctors, ambulance providers, and blood banks.
+- Improved visibility into healthcare resource availability.
+- Reduced manual coordination between healthcare stakeholders.
+
+---
+
+## Hospital Operations
+
+- Faster updates to resource availability.
+- Improved utilization of beds, doctors, and critical medical equipment.
+- Reduced administrative effort through future system integrations.
+
+---
+
+## Public Health Impact
+
+- Better aggregated insights for healthcare planning.
+- Improved understanding of regional healthcare demand.
+- Support for evidence-based infrastructure development.
+
+---
+
+## Platform Growth
+
+- Expansion of integrated healthcare institutions.
+- Increased geographic coverage.
+- Sustainable and scalable system architecture capable of supporting future national deployment.
+
+---
+
+## Definition of Success
+
+HealthConnect AI will be considered successful when patients can make better healthcare decisions using reliable real-time information, hospitals can coordinate resources more efficiently, and healthcare authorities can make better planning decisions through aggregated insights.
+
+Our ultimate measure of success is not the number of users on the platform, but the positive impact the platform creates across the healthcare ecosystem.
 
 ---
 
 # Out of Scope
 
-(To be completed)
+To maintain focus on its mission, HealthConnect AI intentionally does not aim to provide the following capabilities as part of its core platform.
+
+- Replace licensed doctors or healthcare professionals.
+- Perform autonomous medical diagnosis or prescribe treatments.
+- Operate as a complete Hospital Management System (HMS).
+- Replace emergency services such as ambulance providers or hospitals.
+- Provide pharmaceutical manufacturing, medicine delivery, or pharmacy management services as a primary offering.
+- Store unnecessary personal or medical information beyond what is required for platform functionality.
+- Expand into unrelated domains that do not improve healthcare accessibility, coordination, or decision-making.
+
+These boundaries help ensure that HealthConnect AI remains focused on solving its core problem: enabling better healthcare decisions through real-time information and intelligent coordination.
+
+---
