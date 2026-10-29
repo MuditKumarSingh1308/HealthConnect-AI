@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
+import { EmergencySOS } from "@/components/emergency-sos";
 import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -221,19 +222,7 @@ export default function DashboardPage() {
                         reports, schemes, and medical history from one patient workspace.
                       </p>
                     </div>
-                    <Button
-                      aria-describedby="emergency-sos-help"
-                      className="h-14 cursor-not-allowed bg-red-600 px-6 text-base hover:bg-red-600"
-                      disabled
-                      title="Emergency SOS is visual only in this prototype. Call local emergency services for urgent symptoms."
-                    >
-                      <ShieldAlert className="h-5 w-5" />
-                      Emergency SOS
-                    </Button>
-                    <span className="sr-only" id="emergency-sos-help">
-                      Emergency SOS is visual only in this prototype. Contact local emergency
-                      services for urgent symptoms.
-                    </span>
+                    <EmergencySOS />
                   </div>
                 </div>
               </Card>
